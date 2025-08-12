@@ -1,7 +1,4 @@
 // Zoom API integration service for PYRAMID AFTER CARE
-import axios from 'axios';
-
-const ZOOM_API_BASE = 'https://api.zoom.us/v2';
 
 export interface ZoomMeeting {
   id: string;
@@ -118,7 +115,7 @@ class ZoomService {
   }
 
   private async makeRequest(endpoint: string, method: 'GET' | 'POST' | 'PATCH' | 'DELETE' = 'GET', data?: any) {
-    const token = await this.getAccessToken();
+    // const token = await this.getAccessToken();
     
     // For demo purposes, return mock data instead of making real API calls
     return this.getMockResponse(endpoint, method, data);

@@ -17,12 +17,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Stepper,
-  Step,
-  StepLabel,
-  StepContent,
   IconButton,
-  Tooltip,
   LinearProgress,
   FormControlLabel,
   Checkbox
@@ -35,20 +30,13 @@ import {
   VideocamOff,
   Phone,
   ScreenShare,
-  StopScreenShare,
   Chat,
   People,
   Settings,
   Group,
   Security,
-  Warning,
-  Info,
   CheckCircle,
   Error as ErrorIcon,
-  VolumeUp,
-  Computer,
-  PhoneAndroid,
-  Wifi,
   NetworkCheck
 } from '@mui/icons-material';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -94,9 +82,9 @@ const VirtualMeeting: React.FC = () => {
     microphoneEnabled: true,
     speakerVolume: 80
   });
-  const [meetingStarted, setMeetingStarted] = useState(false);
+  // const [meetingStarted, setMeetingStarted] = useState(false);
   const [participants, setParticipants] = useState<Array<any>>([]);
-  const [connectionQuality, setConnectionQuality] = useState<'excellent' | 'good' | 'poor'>('excellent');
+  // const [connectionQuality, setConnectionQuality] = useState<'excellent' | 'good' | 'poor'>('excellent');
   const [showSettings, setShowSettings] = useState(false);
   const [hipaaAccepted, setHipaaAccepted] = useState(false);
 
@@ -138,7 +126,7 @@ const VirtualMeeting: React.FC = () => {
     };
 
     loadMeeting();
-  }, [meetingId, isAuthenticated, navigate]);
+  }, [meetingId, isAuthenticated, navigate, user?.firstName, user?.id, user?.lastName]);
 
   const performTechCheck = async () => {
     try {
@@ -170,7 +158,7 @@ const VirtualMeeting: React.FC = () => {
       // Simulate joining meeting - no actual joinMeeting method needed
       // await zoomService.joinMeeting(meetingInfo.id, user?.id || '');
       setMeetingState('connected');
-      setMeetingStarted(true);
+      // setMeetingStarted(true);
       
       // Simulate participants
       setParticipants([
@@ -244,7 +232,7 @@ const VirtualMeeting: React.FC = () => {
   }
 
   if (meetingState === 'preview') {
-    const isHost = meetingInfo.participants.find(p => p.id === user?.id)?.isHost;
+    // const isHost = meetingInfo.participants.find(p => p.id === user?.id)?.isHost;
 
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -445,12 +433,9 @@ const VirtualMeeting: React.FC = () => {
                       primary="Connection" 
                       secondary={
                         <Chip 
-                          label={connectionQuality.toUpperCase()} 
+                          label="EXCELLENT" 
                           size="small" 
-                          color={
-                            connectionQuality === 'excellent' ? 'success' :
-                            connectionQuality === 'good' ? 'warning' : 'error'
-                          }
+                          color="success"
                         />
                       } 
                     />

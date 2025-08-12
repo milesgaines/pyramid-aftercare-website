@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
 const VideoHero: React.FC = () => {
   return (

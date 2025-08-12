@@ -39,14 +39,16 @@ const PHPProgram: React.FC = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography
+                    <Typography
             variant="h1"
             component="h1"
+            textAlign="center"
             sx={{
               fontSize: { xs: '2.5rem', md: '3.5rem' },
               fontWeight: 300,
               fontFamily: '"Montserrat", sans-serif',
               mb: 3,
+              color: 'white',
             }}
           >
             Partial Hospitalization Program (PHP)

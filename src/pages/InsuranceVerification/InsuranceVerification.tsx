@@ -444,13 +444,14 @@ const InsuranceVerification: React.FC = () => {
           >
             🚨 Need Immediate Help?
           </Typography>
-          <Typography 
-            variant="h6" 
-            paragraph 
+          <Typography
+            variant="h5"
+            textAlign="center"
             sx={{ 
               mb: 4,
               fontWeight: 500,
               lineHeight: 1.4,
+              color: 'white',
             }}
           >
             If you're experiencing a mental health emergency, don't wait for insurance verification.

@@ -151,12 +151,12 @@ const Navigation: React.FC = () => {
             </Box>
 
             {!isMobile && (
-              <Box sx={{ flexGrow: 1, display: 'flex', ml: 4 }}>
+              <Box sx={{ flexGrow: 1, display: 'flex', ml: 6, gap: 1 }}>
                 <Button
                   color="inherit"
                   onClick={() => navigate('/')}
                   sx={{
-                    mx: 1,
+                    mx: 1.5,
                     color: location.pathname === '/' ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
                     fontWeight: location.pathname === '/' ? 600 : 500,
                     borderRadius: '8px',
@@ -180,7 +180,7 @@ const Navigation: React.FC = () => {
                   onClick={handleProgramsMenu}
                   endIcon={<ArrowDropDown />}
                   sx={{
-                    mx: 1,
+                    mx: 1.5,
                     color: (location.pathname.includes('/programs') || 
                            location.pathname === '/group-therapy' || 
                            location.pathname === '/virtual-therapy') ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
@@ -205,20 +205,21 @@ const Navigation: React.FC = () => {
                 </Button>
 
                 <Button
-                  color="inherit"
+                  variant="outlined"
                   onClick={() => navigate('/insurance-verification#verification-form')}
                   sx={{
-                    mx: 1,
-                    color: location.pathname === '/insurance-verification' ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
-                    fontWeight: location.pathname === '/insurance-verification' ? 600 : 500,
+                    mx: 1.5,
+                    color: '#f0f0f0',
+                    borderColor: 'rgba(255, 255, 255, 0.3)',
+                    fontWeight: 600,
                     borderRadius: '8px',
-                    px: 2.5,
+                    px: 3,
                     py: 1,
                     transition: 'all 0.3s ease',
-                    background: location.pathname === '/insurance-verification' ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+                    background: location.pathname === '/insurance-verification' ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
                     '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.08)',
-                      color: '#f0f0f0',
+                      background: 'rgba(255, 255, 255, 0.15)',
+                      borderColor: 'rgba(255, 255, 255, 0.5)',
                       transform: 'translateY(-1px)'
                     }
                   }}

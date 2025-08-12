@@ -100,11 +100,12 @@ const Home: React.FC = () => {
             >
               Begin Your Journey
             </Button>
-            <Button
-              variant="outlined"
+                        <Button
+              variant="contained"
+              color="primary"
               size="large"
               startIcon={<VideoCall />}
-              onClick={() => navigate('/virtual-meeting/demo')}
+              onClick={() => navigate('/insurance-verification#verification-form')}
               sx={{ 
                 px: 5, 
                 py: 2,
@@ -117,7 +118,7 @@ const Home: React.FC = () => {
                 },
               }}
             >
-              Explore Virtual Care
+              Start Virtual Care
             </Button>
           </Box>
         </Box>
@@ -263,11 +264,23 @@ const Home: React.FC = () => {
             </Box>
 
             <Box sx={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 3 }}>
-              <Paper sx={{ p: 3, textAlign: 'center' }}>
+              <Paper 
+                sx={{ 
+                  p: 3, 
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: '0 8px 25px rgba(0,0,0,0.15)'
+                  }
+                }}
+                onClick={() => navigate('/insurance-verification#verification-form')}
+              >
                 <VideoCall color="primary" sx={{ fontSize: 48, mb: 2 }} />
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>Virtual Care</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>Insurance Verification</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Secure online sessions
+                  Quick insurance verification
                 </Typography>
               </Paper>
               <Paper sx={{ p: 3, textAlign: 'center' }}>

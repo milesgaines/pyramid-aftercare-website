@@ -11,12 +11,11 @@ import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Home from './pages/Home/Home';
-import VirtualMeeting from './pages/VirtualMeeting/VirtualMeeting';
+import About from './pages/About/About';
 import InsuranceVerification from './pages/InsuranceVerification/InsuranceVerification';
 import IOPProgram from './pages/Programs/IOPProgram';
 import PHPProgram from './pages/Programs/PHPProgram';
 import GroupTherapy from './pages/GroupTherapy/GroupTherapy';
-import VirtualTherapy from './pages/VirtualTherapy/VirtualTherapy';
 import Legal from './pages/Legal/Legal';
 import Support from './pages/Support/Support';
 
@@ -178,13 +177,11 @@ function App() {
               <Navigation />
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/virtual-meeting" element={<VirtualMeeting />} />
-                <Route path="/virtual-meeting/:meetingId" element={<VirtualMeeting />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/insurance-verification" element={<InsuranceVerification />} />
                 <Route path="/iop-program" element={<IOPProgram />} />
                 <Route path="/php-program" element={<PHPProgram />} />
                 <Route path="/group-therapy" element={<GroupTherapy />} />
-                <Route path="/virtual-therapy" element={<VirtualTherapy />} />
                 <Route path="/programs/iop" element={<IOPProgram />} />
                 <Route path="/programs/php" element={<PHPProgram />} />
                 <Route path="/support" element={<Support />} />

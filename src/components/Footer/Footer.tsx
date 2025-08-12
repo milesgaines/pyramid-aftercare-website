@@ -126,12 +126,12 @@ const Footer: React.FC = () => {
                 Partial Hospitalization (PHP)
               </Link>
               <Link
-                href="#"
+                href="/insurance-verification#verification-form"
                 color="inherit"
                 underline="hover"
                 sx={{ color: 'rgba(255, 255, 255, 0.8)' }}
               >
-                Virtual Therapy
+                Virtual Care
               </Link>
               <Link
                 href="#"
@@ -172,12 +172,12 @@ const Footer: React.FC = () => {
                 Patient Portal
               </Link>
               <Link
-                href="#"
+                href="/insurance-verification#verification-form"
                 color="inherit"
                 underline="hover"
                 sx={{ color: 'rgba(255, 255, 255, 0.8)' }}
               >
-                Virtual Meetings
+                Start Virtual Care
               </Link>
               <Link
                 href="#"

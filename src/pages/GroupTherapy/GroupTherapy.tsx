@@ -58,6 +58,7 @@ const GroupTherapy: React.FC = () => {
               mb: 4,
               maxWidth: '800px',
               mx: 'auto',
+              color: 'white',
             }}
           >
             Connect, Share, and Heal Together in a Supportive Community Environment
@@ -78,7 +79,7 @@ const GroupTherapy: React.FC = () => {
                 boxShadow: '0 6px 16px rgba(0,0,0,0.3)',
               },
             }}
-            onClick={() => navigate('/')}
+            href="tel:8182086456"
           >
             Join Our Community
           </Button>
@@ -295,7 +296,7 @@ const GroupTherapy: React.FC = () => {
                   boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
                 },
               }}
-              onClick={() => navigate('/virtual-meeting')}
+              onClick={() => navigate('/insurance-verification#verification-form')}
             >
               Schedule Consultation
             </Button>

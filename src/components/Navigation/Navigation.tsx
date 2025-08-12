@@ -25,9 +25,9 @@ import {
   LocalHospital,
   ArrowDropDown,
   SupportAgent,
-  Psychology,
   Groups,
   MedicalServices,
+  Info,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -57,7 +57,7 @@ const Navigation: React.FC = () => {
     { text: 'IOP Program', path: '/programs/iop', icon: <LocalHospital /> },
     { text: 'PHP Program', path: '/programs/php', icon: <MedicalServices /> },
     { text: 'Group Therapy', path: '/group-therapy', icon: <Groups /> },
-    { text: 'Virtual Therapy', path: '/virtual-therapy', icon: <Psychology /> },
+    { text: 'About', path: '/about', icon: <Info /> },
     { text: '24/7 Support', path: '/support', icon: <SupportAgent /> },
   ];
 
@@ -182,18 +182,15 @@ const Navigation: React.FC = () => {
                   sx={{
                     mx: 1.5,
                     color: (location.pathname.includes('/programs') || 
-                           location.pathname === '/group-therapy' || 
-                           location.pathname === '/virtual-therapy') ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
+                           location.pathname === '/group-therapy') ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
                     fontWeight: (location.pathname.includes('/programs') || 
-                                location.pathname === '/group-therapy' || 
-                                location.pathname === '/virtual-therapy') ? 600 : 500,
+                                location.pathname === '/group-therapy') ? 600 : 500,
                     borderRadius: '8px',
                     px: 2.5,
                     py: 1,
                     transition: 'all 0.3s ease',
                     background: (location.pathname.includes('/programs') || 
-                                location.pathname === '/group-therapy' || 
-                                location.pathname === '/virtual-therapy') ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+                                location.pathname === '/group-therapy') ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
                     '&:hover': {
                       background: 'rgba(255, 255, 255, 0.08)',
                       color: '#f0f0f0',
@@ -202,6 +199,28 @@ const Navigation: React.FC = () => {
                   }}
                 >
                   Services
+                </Button>
+
+                <Button
+                  color="inherit"
+                  onClick={() => navigate('/about')}
+                  sx={{
+                    mx: 1.5,
+                    color: location.pathname === '/about' ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
+                    fontWeight: location.pathname === '/about' ? 600 : 500,
+                    borderRadius: '8px',
+                    px: 2.5,
+                    py: 1,
+                    transition: 'all 0.3s ease',
+                    background: location.pathname === '/about' ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+                    '&:hover': {
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: '#f0f0f0',
+                      transform: 'translateY(-1px)'
+                    }
+                  }}
+                >
+                  About
                 </Button>
 
                 <Button
@@ -338,8 +357,7 @@ const Navigation: React.FC = () => {
       >
         {menuItems.filter(item => 
           item.path.includes('/programs') || 
-          item.path === '/group-therapy' || 
-          item.path === '/virtual-therapy'
+          item.path === '/group-therapy'
         ).map((item) => (
           <MenuItem
             key={item.text}

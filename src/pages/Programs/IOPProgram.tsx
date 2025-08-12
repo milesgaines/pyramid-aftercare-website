@@ -45,6 +45,7 @@ const IOPProgram: React.FC = () => {
               fontWeight: 300,
               fontFamily: '"Montserrat", sans-serif',
               mb: 3,
+              color: 'white',
             }}
           >
             Intensive Outpatient Program (IOP)

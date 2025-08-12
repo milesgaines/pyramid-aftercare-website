@@ -15,9 +15,11 @@ import PatientPortal from './pages/PatientPortal/PatientPortal';
 import AdminPortal from './pages/AdminPortal/AdminPortal';
 import Login from './pages/Auth/Login';
 import VirtualMeeting from './pages/VirtualMeeting/VirtualMeeting';
-import InsuranceVerification from './components/InsuranceVerification/InsuranceVerification';
+import InsuranceVerification from './pages/InsuranceVerification/InsuranceVerification';
 import IOPProgram from './pages/Programs/IOPProgram';
 import PHPProgram from './pages/Programs/PHPProgram';
+import GroupTherapy from './pages/GroupTherapy/GroupTherapy';
+import VirtualTherapy from './pages/VirtualTherapy/VirtualTherapy';
 import Legal from './pages/Legal/Legal';
 
 // Context
@@ -186,8 +188,13 @@ function App() {
                   {/* <Route path="/register" element={<Register />} /> */}
                   <Route path="/patient-portal/*" element={<PatientPortal />} />
                   <Route path="/admin-portal/*" element={<AdminPortal />} />
+                  <Route path="/virtual-meeting" element={<VirtualMeeting />} />
                   <Route path="/virtual-meeting/:meetingId" element={<VirtualMeeting />} />
                   <Route path="/insurance-verification" element={<InsuranceVerification />} />
+                  <Route path="/iop-program" element={<IOPProgram />} />
+                  <Route path="/php-program" element={<PHPProgram />} />
+                  <Route path="/group-therapy" element={<GroupTherapy />} />
+                  <Route path="/virtual-therapy" element={<VirtualTherapy />} />
                   <Route path="/programs/iop" element={<IOPProgram />} />
                   <Route path="/programs/php" element={<PHPProgram />} />
                   <Route path="/legal" element={<Legal />} />

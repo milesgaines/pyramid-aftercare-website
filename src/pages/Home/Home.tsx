@@ -36,7 +36,7 @@ const Home: React.FC = () => {
     if (isAuthenticated) {
       navigate('/patient-portal');
     } else {
-      navigate('/register');
+      navigate('/insurance-verification#verification-form');
     }
   };
 
@@ -97,8 +97,12 @@ const Home: React.FC = () => {
                 py: 2,
                 fontSize: { xs: '1rem', md: '1.1rem' },
                 borderRadius: 3,
-                boxShadow: '0 4px 20px rgba(107, 123, 125, 0.25)',
+                boxShadow: '0 6px 24px rgba(107, 123, 125, 0.3)',
                 minWidth: { xs: '200px', sm: 'auto' },
+                '&:hover': {
+                  boxShadow: '0 8px 32px rgba(107, 123, 125, 0.4)',
+                  transform: 'translateY(-2px)',
+                },
               }}
             >
               Begin Your Journey
@@ -113,6 +117,11 @@ const Home: React.FC = () => {
                 py: 2,
                 fontSize: '1.1rem',
                 borderRadius: 3,
+                boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+                '&:hover': {
+                  boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
+                  transform: 'translateY(-1px)',
+                },
               }}
             >
               Explore Virtual Care
@@ -167,6 +176,7 @@ const Home: React.FC = () => {
               </Typography>
               <Button 
                 variant="contained" 
+                onClick={() => navigate('/programs/php')}
                 sx={{ 
                   borderRadius: 2,
                   px: 3,
@@ -203,6 +213,7 @@ const Home: React.FC = () => {
               </Typography>
               <Button 
                 variant="contained" 
+                onClick={() => navigate('/programs/iop')}
                 sx={{ 
                   borderRadius: 2,
                   px: 3,
@@ -310,7 +321,14 @@ const Home: React.FC = () => {
               size="large"
               color="secondary"
               onClick={handleGetStarted}
-              sx={{ px: 4, py: 1.5 }}
+              sx={{ 
+                px: 4, 
+                py: 1.5,
+                boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+                '&:hover': {
+                  boxShadow: '0 6px 20px rgba(0,0,0,0.3)',
+                },
+              }}
             >
               {isAuthenticated ? 'Access Portal' : 'Get Started'}
             </Button>
@@ -318,8 +336,17 @@ const Home: React.FC = () => {
               variant="outlined"
               size="large"
               color="inherit"
-              onClick={() => navigate('/insurance-verification')}
-              sx={{ px: 4, py: 1.5, borderColor: 'white', color: 'white' }}
+              onClick={() => navigate('/insurance-verification#verification-form')}
+              sx={{ 
+                px: 4, 
+                py: 1.5, 
+                borderColor: 'white', 
+                color: 'white',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                '&:hover': {
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+                },
+              }}
             >
               Verify Insurance
             </Button>

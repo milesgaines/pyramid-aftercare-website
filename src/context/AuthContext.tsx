@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { supabase, UserProfile } from '../lib/supabase';
-import { User as SupabaseUser } from '@supabase/supabase-js';
+import { supabase } from '../lib/supabase';
 
 export interface User {
   id: string;
@@ -297,7 +296,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
       },
       'admin@example.com': {
-        password: 'admin123',
+        password: 'password123',
         user: {
           id: 'demo-admin-1',
           email: 'admin@example.com',
@@ -311,7 +310,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
       },
       'provider@example.com': {
-        password: 'provider123',
+        password: 'password123',
         user: {
           id: 'demo-provider-1',
           email: 'provider@example.com',

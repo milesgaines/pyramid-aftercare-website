@@ -28,11 +28,7 @@ import {
   Logout,
   Login,
   PersonAdd,
-  Phone,
   LocalHospital,
-  Group,
-  VerifiedUser,
-  ArrowDropDown,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -46,7 +42,6 @@ const Navigation: React.FC = () => {
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [programsAnchor, setProgramsAnchor] = useState<null | HTMLElement>(null);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -66,21 +61,8 @@ const Navigation: React.FC = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleProgramsMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setProgramsAnchor(event.currentTarget);
-  };
-
-  const handleProgramsClose = () => {
-    setProgramsAnchor(null);
-  };
-
   const menuItems = [
     { text: 'Home', icon: <Home />, path: '/' },
-    { text: 'IOP Program', icon: <LocalHospital />, path: '/programs/iop' },
-    { text: 'PHP Program', icon: <LocalHospital />, path: '/programs/php' },
-    { text: 'Group Therapy', icon: <Group />, path: '/group-therapy' },
-    { text: 'Virtual Therapy', icon: <VideoCall />, path: '/virtual-therapy' },
-    { text: 'Insurance Verification', icon: <VerifiedUser />, path: '/insurance-verification#verification-form' },
     ...(isAuthenticated
       ? user?.role === 'admin'
         ? [{ text: 'Admin Portal', icon: <AdminPanelSettings />, path: '/admin-portal' }]
@@ -89,13 +71,6 @@ const Navigation: React.FC = () => {
     ...(isAuthenticated
       ? [{ text: 'Virtual Meeting', icon: <VideoCall />, path: '/virtual-meeting/demo' }]
       : []),
-  ];
-
-  const programItems = [
-    { text: 'IOP Program', path: '/programs/iop' },
-    { text: 'PHP Program', path: '/programs/php' },
-    { text: 'Group Therapy', path: '/group-therapy' },
-    { text: 'Virtual Therapy', path: '/virtual-therapy' },
   ];
 
   const authItems = isAuthenticated
@@ -194,75 +169,20 @@ const Navigation: React.FC = () => {
 
             {!isMobile && (
               <Box sx={{ flexGrow: 1, display: 'flex', ml: 4 }}>
-                <Button
-                  color="inherit"
-                  onClick={() => navigate('/')}
-                  sx={{
-                    mx: 1,
-                    color: location.pathname === '/' ? 'secondary.main' : 'inherit',
-                    fontWeight: location.pathname === '/' ? 600 : 400,
-                  }}
-                >
-                  Home
-                </Button>
-
-                {/* Services Dropdown */}
-                <Button
-                  color="inherit"
-                  onClick={handleProgramsMenu}
-                  endIcon={<ArrowDropDown />}
-                  sx={{
-                    mx: 1,
-                    color: (location.pathname.includes('/programs') || 
-                           location.pathname === '/group-therapy' || 
-                           location.pathname === '/virtual-therapy') ? 'secondary.main' : 'inherit',
-                    fontWeight: (location.pathname.includes('/programs') || 
-                                location.pathname === '/group-therapy' || 
-                                location.pathname === '/virtual-therapy') ? 600 : 400,
-                  }}
-                >
-                  Services
-                </Button>
-
-                <Button
-                  color="inherit"
-                  onClick={() => navigate('/insurance-verification#verification-form')}
-                  sx={{
-                    mx: 1,
-                    color: location.pathname === '/insurance-verification' ? 'secondary.main' : 'inherit',
-                    fontWeight: location.pathname === '/insurance-verification' ? 600 : 400,
-                  }}
-                >
-                  Insurance
-                </Button>
-
-                {isAuthenticated && (
+                {menuItems.map((item) => (
                   <Button
+                    key={item.text}
                     color="inherit"
-                    onClick={() => navigate(user?.role === 'admin' ? '/admin-portal' : '/patient-portal')}
+                    onClick={() => navigate(item.path)}
                     sx={{
                       mx: 1,
-                      color: location.pathname.includes('portal') ? 'secondary.main' : 'inherit',
-                      fontWeight: location.pathname.includes('portal') ? 600 : 400,
+                      color: location.pathname === item.path ? 'secondary.main' : 'inherit',
+                      fontWeight: location.pathname === item.path ? 600 : 400,
                     }}
                   >
-                    {user?.role === 'admin' ? 'Admin Portal' : 'Patient Portal'}
+                    {item.text}
                   </Button>
-                )}
-
-                {isAuthenticated && (
-                  <Button
-                    color="inherit"
-                    onClick={() => navigate('/virtual-meeting/demo')}
-                    sx={{
-                      mx: 1,
-                      color: location.pathname.includes('/virtual-meeting') ? 'secondary.main' : 'inherit',
-                      fontWeight: location.pathname.includes('/virtual-meeting') ? 600 : 400,
-                    }}
-                  >
-                    Virtual Meeting
-                  </Button>
-                )}
+                ))}
               </Box>
             )}
 
@@ -307,52 +227,21 @@ const Navigation: React.FC = () => {
                   </Menu>
                 </>
               ) : (
-                <>
-                  {!isMobile && (
-                    <Box sx={{ display: 'flex', gap: 1 }}>
-                      <Button color="inherit" onClick={() => navigate('/login')}>
-                        Login
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        color="inherit"
-                        href="tel:8183000033"
-                        startIcon={<Phone />}
-                        sx={{ ml: 1 }}
-                      >
-                        Call Us
-                      </Button>
-                    </Box>
-                  )}
-                  {isMobile && (
-                    <Box sx={{ display: 'flex', gap: 1 }}>
-                      <IconButton
-                        color="inherit"
-                        onClick={() => navigate('/login')}
-                        sx={{ 
-                          bgcolor: 'rgba(255,255,255,0.1)',
-                          '&:hover': {
-                            bgcolor: 'rgba(255,255,255,0.2)',
-                          }
-                        }}
-                      >
-                        <Login />
-                      </IconButton>
-                      <IconButton
-                        color="inherit"
-                        href="tel:8183000033"
-                        sx={{ 
-                          bgcolor: 'rgba(255,255,255,0.1)',
-                          '&:hover': {
-                            bgcolor: 'rgba(255,255,255,0.2)',
-                          }
-                        }}
-                      >
-                        <Phone />
-                      </IconButton>
-                    </Box>
-                  )}
-                </>
+                !isMobile && (
+                  <Box sx={{ display: 'flex', gap: 1 }}>
+                    <Button color="inherit" onClick={() => navigate('/login')}>
+                      Login
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      color="inherit"
+                      onClick={() => navigate('/register')}
+                      sx={{ ml: 1 }}
+                    >
+                      Register
+                    </Button>
+                  </Box>
+                )
               )}
             </Box>
           </Toolbar>
@@ -371,29 +260,6 @@ const Navigation: React.FC = () => {
       >
         {drawer}
       </Drawer>
-
-      {/* Services Dropdown Menu */}
-      <Menu
-        id="services-menu"
-        anchorEl={programsAnchor}
-        open={Boolean(programsAnchor)}
-        onClose={handleProgramsClose}
-        MenuListProps={{
-          'aria-labelledby': 'services-button',
-        }}
-      >
-        {programItems.map((item) => (
-          <MenuItem
-            key={item.text}
-            onClick={() => {
-              navigate(item.path);
-              handleProgramsClose();
-            }}
-          >
-            {item.text}
-          </MenuItem>
-        ))}
-      </Menu>
     </>
   );
 };

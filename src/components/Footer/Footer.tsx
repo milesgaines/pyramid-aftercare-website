@@ -57,16 +57,40 @@ const Footer: React.FC = () => {
               designed for lasting recovery and sustainable wellness.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
-              <IconButton sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+              <IconButton 
+                component="a"
+                href="https://facebook.com/pyramidaftercare"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
+              >
                 <Facebook />
               </IconButton>
-              <IconButton sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+              <IconButton 
+                component="a"
+                href="https://twitter.com/pyramidaftercare"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
+              >
                 <Twitter />
               </IconButton>
-              <IconButton sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+              <IconButton 
+                component="a"
+                href="https://linkedin.com/company/pyramidaftercare"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
+              >
                 <LinkedIn />
               </IconButton>
-              <IconButton sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+              <IconButton 
+                component="a"
+                href="https://instagram.com/pyramidaftercare"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
+              >
                 <Instagram />
               </IconButton>
             </Box>

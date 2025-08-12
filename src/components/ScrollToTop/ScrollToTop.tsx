@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Fab, Zoom } from '@mui/material';
 import { KeyboardArrowUp } from '@mui/icons-material';
 
 const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation();
+
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto', // Use 'auto' for instant scroll on navigation
+    });
+  }, [location.pathname]);
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
@@ -22,7 +32,7 @@ const ScrollToTop: React.FC = () => {
     };
   }, []);
 
-  // Scroll to top smoothly
+  // Scroll to top smoothly when button is clicked
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

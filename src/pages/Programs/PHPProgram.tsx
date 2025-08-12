@@ -32,7 +32,7 @@ const PHPProgram: React.FC = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #7FB069 0%, #6B7B7D 100%)',
+          background: 'linear-gradient(135deg, #6B7B7D 0%, #4A5B5D 100%)',
           color: 'white',
           py: { xs: 8, md: 12 },
           textAlign: 'center',
@@ -368,7 +368,7 @@ const PHPProgram: React.FC = () => {
           sx={{ 
             p: 6, 
             textAlign: 'center', 
-            background: 'linear-gradient(135deg, #7FB069 0%, #6B7B7D 100%)',
+            background: 'linear-gradient(135deg, #6B7B7D 0%, #4A5B5D 100%)',
             color: 'white' 
           }}
         >
@@ -392,8 +392,17 @@ const PHPProgram: React.FC = () => {
               variant="outlined"
               size="large"
               color="inherit"
-              onClick={() => navigate('/insurance-verification')}
-              sx={{ px: 4, py: 1.5, borderColor: 'white', color: 'white' }}
+              onClick={() => navigate('/insurance-verification#verification-form')}
+              sx={{ 
+                px: 4, 
+                py: 1.5, 
+                borderColor: 'white', 
+                color: 'white',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                '&:hover': {
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+                },
+              }}
             >
               Verify Insurance
             </Button>

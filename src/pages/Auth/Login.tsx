@@ -15,6 +15,7 @@ import {
 import { Visibility, VisibilityOff, Email, Lock } from '@mui/icons-material';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import ForgotPasswordModal from '../../components/ForgotPasswordModal';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Login: React.FC = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [forgotPasswordOpen, setForgotPasswordOpen] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -70,7 +72,7 @@ const Login: React.FC = () => {
       <Paper elevation={3} sx={{ p: 4 }}>
         <Box textAlign="center" sx={{ mb: 4 }}>
           <img
-            src="/pyramid-logo.png"
+            src="/images/pyramid-logo.png"
             alt="PYRAMID AFTER CARE"
             style={{ height: 60, marginBottom: 16 }}
           />
@@ -148,7 +150,13 @@ const Login: React.FC = () => {
           </Button>
 
           <Box textAlign="center" sx={{ mb: 2 }}>
-            <Link component={RouterLink} to="/forgot-password" color="primary">
+            <Link 
+              component="button" 
+              type="button"
+              onClick={() => setForgotPasswordOpen(true)}
+              color="primary"
+              sx={{ textDecoration: 'none', cursor: 'pointer' }}
+            >
               Forgot your password?
             </Link>
           </Box>
@@ -172,11 +180,16 @@ const Login: React.FC = () => {
         <Box sx={{ mt: 4, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
           <Typography variant="body2" color="text.secondary" textAlign="center">
             <strong>Demo Accounts:</strong><br />
-            Patient: patient@pyramidaftercare.com / password<br />
-            Admin: admin@pyramidaftercare.com / password
+            Patient: patient@example.com / password123<br />
+            Admin: admin@example.com / password123
           </Typography>
         </Box>
       </Paper>
+
+      <ForgotPasswordModal 
+        open={forgotPasswordOpen} 
+        onClose={() => setForgotPasswordOpen(false)} 
+      />
     </Container>
   );
 };

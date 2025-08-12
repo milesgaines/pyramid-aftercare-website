@@ -21,6 +21,7 @@ import PHPProgram from './pages/Programs/PHPProgram';
 import GroupTherapy from './pages/GroupTherapy/GroupTherapy';
 import VirtualTherapy from './pages/VirtualTherapy/VirtualTherapy';
 import Legal from './pages/Legal/Legal';
+import Support from './pages/Support/Support';
 
 // Context
 import { AuthProvider } from './context/AuthContext';
@@ -197,6 +198,7 @@ function App() {
                   <Route path="/virtual-therapy" element={<VirtualTherapy />} />
                   <Route path="/programs/iop" element={<IOPProgram />} />
                   <Route path="/programs/php" element={<PHPProgram />} />
+                  <Route path="/support" element={<Support />} />
                   <Route path="/legal" element={<Legal />} />
                 </Routes>
                 <Footer />

@@ -33,6 +33,11 @@ import {
   Group,
   VerifiedUser,
   ArrowDropDown,
+  SupportAgent,
+  Dashboard,
+  Psychology,
+  Groups,
+  MedicalServices,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -92,10 +97,13 @@ const Navigation: React.FC = () => {
   ];
 
   const programItems = [
-    { text: 'IOP Program', path: '/programs/iop' },
-    { text: 'PHP Program', path: '/programs/php' },
-    { text: 'Group Therapy', path: '/group-therapy' },
-    { text: 'Virtual Therapy', path: '/virtual-therapy' },
+    { text: 'IOP Program', path: '/programs/iop', icon: <LocalHospital /> },
+    { text: 'PHP Program', path: '/programs/php', icon: <MedicalServices /> },
+    { text: 'Group Therapy', path: '/group-therapy', icon: <Groups /> },
+    { text: 'Virtual Therapy', path: '/virtual-therapy', icon: <Psychology /> },
+    { text: 'Patient Portal', path: '/patient-portal', icon: <Dashboard /> },
+    { text: 'Virtual Meetings', path: '/virtual-meeting', icon: <VideoCall /> },
+    { text: '24/7 Support', path: '/support', icon: <SupportAgent /> },
   ];
 
   const authItems = isAuthenticated
@@ -381,6 +389,20 @@ const Navigation: React.FC = () => {
         MenuListProps={{
           'aria-labelledby': 'services-button',
         }}
+        PaperProps={{
+          sx: {
+            minWidth: 280,
+            mt: 1,
+            '& .MuiMenuItem-root': {
+              px: 3,
+              py: 1.5,
+              fontSize: '0.95rem',
+              '&:hover': {
+                backgroundColor: 'rgba(107, 123, 125, 0.08)',
+              },
+            },
+          },
+        }}
       >
         {programItems.map((item) => (
           <MenuItem
@@ -389,7 +411,15 @@ const Navigation: React.FC = () => {
               navigate(item.path);
               handleProgramsClose();
             }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2,
+            }}
           >
+            <Box sx={{ color: 'primary.main', display: 'flex', alignItems: 'center' }}>
+              {item.icon}
+            </Box>
             {item.text}
           </MenuItem>
         ))}

@@ -1,5 +1,4 @@
 {
-  "_comment": "Updated build configuration for successful deployment",
   "rewrites": [
     {
       "source": "/(.*)",

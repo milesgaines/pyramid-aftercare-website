@@ -18,26 +18,14 @@ import {
   StepLabel,
   StepContent,
   Chip,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
   Stack,
 } from '@mui/material';
 import {
   CheckCircle,
   Cancel,
-  Info,
-  ExpandMore,
   LocalHospital,
   Security,
-  AttachMoney,
   Person,
-  Phone,
-  Email,
 } from '@mui/icons-material';
 
 interface InsuranceInfo {
@@ -94,11 +82,11 @@ const InsuranceVerification: React.FC = () => {
     'Other',
   ];
 
-  const steps = [
-    'Insurance Information',
-    'Verification',
-    'Coverage Details',
-  ];
+  // const steps = [
+  //   'Insurance Information',
+  //   'Verification',
+  //   'Coverage Details',
+  // ];
 
   const handleInputChange = (field: keyof InsuranceInfo, value: string) => {
     setInsuranceInfo(prev => ({ ...prev, [field]: value }));

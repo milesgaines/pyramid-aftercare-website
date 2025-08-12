@@ -11,9 +11,6 @@ import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Home from './pages/Home/Home';
-import PatientPortal from './pages/PatientPortal/PatientPortal';
-import AdminPortal from './pages/AdminPortal/AdminPortal';
-import Login from './pages/Auth/Login';
 import VirtualMeeting from './pages/VirtualMeeting/VirtualMeeting';
 import InsuranceVerification from './pages/InsuranceVerification/InsuranceVerification';
 import IOPProgram from './pages/Programs/IOPProgram';
@@ -22,9 +19,6 @@ import GroupTherapy from './pages/GroupTherapy/GroupTherapy';
 import VirtualTherapy from './pages/VirtualTherapy/VirtualTherapy';
 import Legal from './pages/Legal/Legal';
 import Support from './pages/Support/Support';
-
-// Context
-import { AuthProvider } from './context/AuthContext';
 
 const theme = createTheme({
   palette: {
@@ -51,39 +45,39 @@ const theme = createTheme({
     fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif',
     h1: {
       fontSize: '2.75rem',
-      fontWeight: 600,
+      fontWeight: 300,
       fontFamily: '"Montserrat", sans-serif',
       color: '#2C3E40',
       letterSpacing: '-0.02em',
     },
     h2: {
       fontSize: '2.25rem',
-      fontWeight: 500,
+      fontWeight: 300,
       fontFamily: '"Montserrat", sans-serif',
       color: '#2C3E40',
       letterSpacing: '-0.01em',
     },
     h3: {
       fontSize: '1.75rem',
-      fontWeight: 500,
+      fontWeight: 300,
       fontFamily: '"Montserrat", sans-serif',
       color: '#2C3E40',
     },
     h4: {
       fontSize: '1.5rem',
-      fontWeight: 500,
+      fontWeight: 300,
       fontFamily: '"Montserrat", sans-serif',
       color: '#2C3E40',
     },
     h5: {
       fontSize: '1.25rem',
-      fontWeight: 500,
+      fontWeight: 300,
       fontFamily: '"Montserrat", sans-serif',
       color: '#2C3E40',
     },
     h6: {
       fontSize: '1rem',
-      fontWeight: 500,
+      fontWeight: 300,
       fontFamily: '"Montserrat", sans-serif',
       color: '#2C3E40',
     },
@@ -179,33 +173,27 @@ function App() {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <AuthProvider>
-            <Router>
-              <div className="App">
-                <Navigation />
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  {/* <Route path="/register" element={<Register />} /> */}
-                  <Route path="/patient-portal/*" element={<PatientPortal />} />
-                  <Route path="/admin-portal/*" element={<AdminPortal />} />
-                  <Route path="/virtual-meeting" element={<VirtualMeeting />} />
-                  <Route path="/virtual-meeting/:meetingId" element={<VirtualMeeting />} />
-                  <Route path="/insurance-verification" element={<InsuranceVerification />} />
-                  <Route path="/iop-program" element={<IOPProgram />} />
-                  <Route path="/php-program" element={<PHPProgram />} />
-                  <Route path="/group-therapy" element={<GroupTherapy />} />
-                  <Route path="/virtual-therapy" element={<VirtualTherapy />} />
-                  <Route path="/programs/iop" element={<IOPProgram />} />
-                  <Route path="/programs/php" element={<PHPProgram />} />
-                  <Route path="/support" element={<Support />} />
-                  <Route path="/legal" element={<Legal />} />
-                </Routes>
-                <Footer />
-                <ScrollToTop />
-              </div>
-            </Router>
-          </AuthProvider>
+          <Router>
+            <div className="App">
+              <Navigation />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/virtual-meeting" element={<VirtualMeeting />} />
+                <Route path="/virtual-meeting/:meetingId" element={<VirtualMeeting />} />
+                <Route path="/insurance-verification" element={<InsuranceVerification />} />
+                <Route path="/iop-program" element={<IOPProgram />} />
+                <Route path="/php-program" element={<PHPProgram />} />
+                <Route path="/group-therapy" element={<GroupTherapy />} />
+                <Route path="/virtual-therapy" element={<VirtualTherapy />} />
+                <Route path="/programs/iop" element={<IOPProgram />} />
+                <Route path="/programs/php" element={<PHPProgram />} />
+                <Route path="/support" element={<Support />} />
+                <Route path="/legal" element={<Legal />} />
+              </Routes>
+              <Footer />
+              <ScrollToTop />
+            </div>
+          </Router>
         </ThemeProvider>
       </LocalizationProvider>
     </QueryClientProvider>

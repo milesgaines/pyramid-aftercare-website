@@ -373,7 +373,7 @@ const Legal: React.FC = () => {
             Privacy Officer at:
           </Typography>
           <Typography variant="body1" paragraph>
-            <strong>Phone:</strong> <a href="tel:8183000033" style={{ color: 'inherit', textDecoration: 'none' }}>(818) 300-0033</a><br />
+            <strong>Phone:</strong> <a href="tel:8182086456" style={{ color: 'inherit', textDecoration: 'none' }}>(818) 208-6456</a><br />
             <strong>Email:</strong> <a href="mailto:info@pyramidaftercare.com" style={{ color: 'inherit', textDecoration: 'none' }}>info@pyramidaftercare.com</a>
           </Typography>
 
@@ -391,7 +391,7 @@ const Legal: React.FC = () => {
             Last updated: January 1, 2025
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-            If you have any questions about these policies, please contact us at <a href="tel:8183000033" style={{ color: 'inherit' }}>(818) 300-0033</a> or <a href="mailto:info@pyramidaftercare.com" style={{ color: 'inherit' }}>info@pyramidaftercare.com</a>
+            If you have any questions about these policies, please contact us at <a href="tel:8182086456" style={{ color: 'inherit' }}>(818) 208-6456</a> or <a href="mailto:info@pyramidaftercare.com" style={{ color: 'inherit' }}>info@pyramidaftercare.com</a>
           </Typography>
         </Box>
       </Container>

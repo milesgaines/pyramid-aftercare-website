@@ -81,7 +81,7 @@ const InsuranceVerification: React.FC = () => {
             component="h1"
             sx={{
               fontSize: { xs: '2.5rem', md: '3.5rem' },
-              fontWeight: 600,
+              fontWeight: 300,
               fontFamily: '"Montserrat", sans-serif',
               mb: 3,
             }}
@@ -115,7 +115,7 @@ const InsuranceVerification: React.FC = () => {
                 },
               }}
               startIcon={<Phone />}
-              href="tel:8183000033"
+              href="tel:8182086456"
             >
               Call for Immediate Verification
             </Button>
@@ -158,7 +158,7 @@ const InsuranceVerification: React.FC = () => {
               benefits and contact you within 24 hours with detailed coverage information.
             </Typography>
             <Alert severity="info" sx={{ mb: 4, maxWidth: '600px', mx: 'auto' }}>
-              For immediate assistance or urgent questions, please call us at (818) 300-0033 or email insurance@pyramidaftercare.com
+              For immediate assistance or urgent questions, please call us at (818) 208-6456 or email insurance@pyramidaftercare.com
             </Alert>
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Button
@@ -172,7 +172,7 @@ const InsuranceVerification: React.FC = () => {
                 variant="outlined"
                 size="large"
                 startIcon={<Phone />}
-                href="tel:8183000033"
+                href="tel:8182086456"
               >
                 Call Us Now
               </Button>
@@ -393,9 +393,9 @@ const InsuranceVerification: React.FC = () => {
                     size="large"
                     fullWidth
                     startIcon={<Phone />}
-                    href="tel:8183000033"
+                    href="tel:8182086456"
                   >
-                    (818) 300-0033
+                    (818) 208-6456
                   </Button>
                 </Paper>
                 <Paper sx={{ p: 4, textAlign: 'center' }}>
@@ -437,7 +437,7 @@ const InsuranceVerification: React.FC = () => {
             variant="h4" 
             gutterBottom 
             sx={{ 
-              fontWeight: 700,
+              fontWeight: 600,
               mb: 3,
               textShadow: '0 2px 4px rgba(0,0,0,0.3)',
             }}
@@ -464,7 +464,7 @@ const InsuranceVerification: React.FC = () => {
               px: 6,
               py: 2,
               fontSize: '1.2rem',
-              fontWeight: 700,
+              fontWeight: 600,
               borderRadius: 3,
               boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
               '&:hover': {
@@ -475,9 +475,9 @@ const InsuranceVerification: React.FC = () => {
               transition: 'all 0.3s ease',
             }}
             startIcon={<Phone sx={{ fontSize: '1.5rem' }} />}
-            href="tel:8183000033"
+            href="tel:8182086456"
           >
-            Call (818) 300-0033 Now
+            Call (818) 208-6456 Now
           </Button>
         </Paper>
       </Container>

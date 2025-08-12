@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google API Test</title>
+</head>
+<body>
+    <h1>Google API Configuration Test</h1>
+    <div id="status"></div>
+    <button onclick="testGoogleAPI()">Test Google API</button>
+    <button onclick="signIn()">Sign In to Google</button>
+    <button onclick="signOut()">Sign Out</button>
+    
+    <div id="results"></div>
+
+    <script>
+        // Your API credentials
+        const API_KEY = 'AIzaSyA6jEunHgDAKraOYvHyNXQ4JL9MyN7Z2YU';
+        const CLIENT_ID = '115228647350962295570';
+        const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
+        const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+
+        function updateStatus(message) {
+            document.getElementById('status').innerHTML = message;
+            console.log(message);
+        }
+
+        function gapi_init() {
+            updateStatus('Initializing Google API...');
+            
+            gapi.load('client:auth2', function() {
+                gapi.client.init({
+                    apiKey: API_KEY,
+                    clientId: CLIENT_ID,
+                    discoveryDocs: DISCOVERY_DOCS,
+                    scope: SCOPES
+                }).then(function () {
+                    updateStatus('Google API initialized successfully!');
+                    
+                    // Check if user is already signed in
+                    const authInstance = gapi.auth2.getAuthInstance();
+                    const isSignedIn = authInstance.isSignedIn.get();
+                    updateStatus(`API Ready. Signed in: ${isSignedIn}`);
+                    
+                }).catch(function(error) {
+                    updateStatus(`Initialization failed: ${JSON.stringify(error)}`);
+                    console.error('Initialization error:', error);
+                });
+            });
+        }
+
+        function testGoogleAPI() {
+            updateStatus('Testing API connection...');
+            
+            // Test with API key only (no auth required)
+            fetch(`https://www.googleapis.com/calendar/v3/users/me/calendarList?key=${API_KEY}`)
+                .then(response => {
+                    if (response.ok) {
+                        updateStatus('API Key test successful!');
+                        return response.json();
+                    } else {
+                        updateStatus(`API Key test failed: ${response.status} ${response.statusText}`);
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                })
+                .then(data => {
+                    document.getElementById('results').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                })
+                .catch(error => {
+                    updateStatus(`API test error: ${error.message}`);
+                    document.getElementById('results').innerHTML = `Error: ${error.message}`;
+                });
+        }
+
+        function signIn() {
+            updateStatus('Attempting to sign in...');
+            const authInstance = gapi.auth2.getAuthInstance();
+            
+            authInstance.signIn().then(function() {
+                updateStatus('Sign in successful!');
+                const user = authInstance.currentUser.get();
+                const profile = user.getBasicProfile();
+                updateStatus(`Signed in as: ${profile.getName()} (${profile.getEmail()})`);
+            }).catch(function(error) {
+                updateStatus(`Sign in failed: ${JSON.stringify(error)}`);
+                console.error('Sign in error:', error);
+            });
+        }
+
+        function signOut() {
+            const authInstance = gapi.auth2.getAuthInstance();
+            authInstance.signOut().then(function() {
+                updateStatus('Signed out successfully');
+                document.getElementById('results').innerHTML = '';
+            });
+        }
+    </script>
+    
+    <!-- Load Google API -->
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapi_init()"></script>
+</body>
+</html>

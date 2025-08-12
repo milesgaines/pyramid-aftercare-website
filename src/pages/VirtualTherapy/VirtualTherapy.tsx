@@ -39,16 +39,16 @@ const VirtualTherapy: React.FC = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography
-            variant="h1"
-            component="h1"
-            sx={{
-              fontSize: { xs: '2.5rem', md: '3.5rem' },
-              fontWeight: 600,
-              fontFamily: '"Montserrat", sans-serif',
-              mb: 3,
-            }}
-          >
+                  <Typography 
+          variant="h2" 
+          component="h1" 
+          gutterBottom
+          sx={{ 
+            fontWeight: 300,
+            color: 'white',
+            mb: 3
+          }}
+        >
             Virtual Therapy
           </Typography>
           <Typography
@@ -312,9 +312,9 @@ const VirtualTherapy: React.FC = () => {
                 },
               }}
               startIcon={<Phone />}
-              href="tel:8183000033"
+              href="tel:8182086456"
             >
-              Call (818) 300-0033
+              Call (818) 208-6456
             </Button>
             <Button
               variant="outlined"

@@ -8,7 +8,6 @@ import {
   Menu,
   MenuItem,
   Box,
-  Avatar,
   Container,
   Drawer,
   List,
@@ -22,50 +21,24 @@ import {
 import {
   Menu as MenuIcon,
   Home,
-  Person,
-  AdminPanelSettings,
-  VideoCall,
-  Logout,
-  Login,
-  PersonAdd,
   Phone,
   LocalHospital,
-  Group,
-  VerifiedUser,
   ArrowDropDown,
   SupportAgent,
-  Dashboard,
   Psychology,
   Groups,
   MedicalServices,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
 
 const Navigation: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, isAuthenticated, logout } = useAuth();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [programsAnchor, setProgramsAnchor] = useState<null | HTMLElement>(null);
-
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-    handleClose();
-  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -80,52 +53,19 @@ const Navigation: React.FC = () => {
   };
 
   const menuItems = [
-    { text: 'Home', icon: <Home />, path: '/' },
-    { text: 'IOP Program', icon: <LocalHospital />, path: '/programs/iop' },
-    { text: 'PHP Program', icon: <LocalHospital />, path: '/programs/php' },
-    { text: 'Group Therapy', icon: <Group />, path: '/group-therapy' },
-    { text: 'Virtual Therapy', icon: <VideoCall />, path: '/virtual-therapy' },
-    { text: 'Insurance Verification', icon: <VerifiedUser />, path: '/insurance-verification#verification-form' },
-    ...(isAuthenticated
-      ? user?.role === 'admin'
-        ? [{ text: 'Admin Portal', icon: <AdminPanelSettings />, path: '/admin-portal' }]
-        : [{ text: 'Patient Portal', icon: <Person />, path: '/patient-portal' }]
-      : []),
-    ...(isAuthenticated
-      ? [{ text: 'Virtual Meeting', icon: <VideoCall />, path: '/virtual-meeting/demo' }]
-      : []),
-  ];
-
-  const programItems = [
+    { text: 'Home', path: '/', icon: <Home /> },
     { text: 'IOP Program', path: '/programs/iop', icon: <LocalHospital /> },
     { text: 'PHP Program', path: '/programs/php', icon: <MedicalServices /> },
     { text: 'Group Therapy', path: '/group-therapy', icon: <Groups /> },
     { text: 'Virtual Therapy', path: '/virtual-therapy', icon: <Psychology /> },
-    { text: 'Patient Portal', path: '/patient-portal', icon: <Dashboard /> },
-    { text: 'Virtual Meetings', path: '/virtual-meeting', icon: <VideoCall /> },
     { text: '24/7 Support', path: '/support', icon: <SupportAgent /> },
   ];
-
-  const authItems = isAuthenticated
-    ? [
-        { text: 'Profile', icon: <Person />, action: () => navigate('/patient-portal/profile') },
-        { text: 'Logout', icon: <Logout />, action: handleLogout },
-      ]
-    : [
-        { text: 'Login', icon: <Login />, action: () => navigate('/login') },
-        { text: 'Register', icon: <PersonAdd />, action: () => navigate('/register') },
-      ];
 
   const drawer = (
     <Box sx={{ width: 250, pt: 2 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', px: 2, mb: 2 }}>
-        <img
-          src="/pyramid-logo.png"
-          alt="PYRAMID AFTER CARE"
-          style={{ height: 40, marginRight: 10 }}
-        />
-        <Typography variant="h6" sx={{ fontWeight: 600, color: theme.palette.primary.main }}>
-          PYRAMID
+        <Typography variant="h6" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
+          PYRAMID AFTER CARE
         </Typography>
       </Box>
       <List>
@@ -143,56 +83,66 @@ const Navigation: React.FC = () => {
             </ListItemButton>
           </ListItem>
         ))}
-        <Box sx={{ mt: 2, pt: 2, borderTop: 1, borderColor: 'divider' }}>
-          {authItems.map((item) => (
-            <ListItem key={item.text} disablePadding>
-              <ListItemButton
-                onClick={() => {
-                  item.action();
-                  setMobileOpen(false);
-                }}
-              >
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </Box>
       </List>
     </Box>
   );
 
   return (
     <>
-      <AppBar position="static" elevation={2}>
+      <AppBar 
+        position="static" 
+        elevation={0}
+        sx={{
+          background: 'linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 50%, #1a1a1a 100%)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          backdropFilter: 'blur(10px)',
+        }}
+      >
         <Container maxWidth="xl">
-          <Toolbar>
+          <Toolbar sx={{ py: 1 }}>
             {isMobile && (
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2 }}
+                sx={{ 
+                  mr: 2,
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: '8px',
+                  padding: '8px',
+                  '&:hover': {
+                    background: 'rgba(255, 255, 255, 0.2)',
+                    borderColor: 'rgba(255, 255, 255, 0.3)',
+                    transform: 'scale(1.05)'
+                  },
+                  '& .MuiSvgIcon-root': {
+                    fontSize: '1.5rem',
+                    color: '#f0f0f0'
+                  },
+                  transition: 'all 0.3s ease'
+                }}
               >
                 <MenuIcon />
               </IconButton>
             )}
 
             <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: isMobile ? 1 : 0 }}>
-              <img
-                src="/pyramid-logo.png"
-                alt="PYRAMID AFTER CARE"
-                style={{ height: 40, marginRight: 10, cursor: 'pointer' }}
-                onClick={() => navigate('/')}
-              />
               <Typography
                 variant="h6"
                 component="div"
                 sx={{ 
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: 'pointer',
-                  display: { xs: 'none', sm: 'block' }
+                  color: '#e8e8e8',
+                  letterSpacing: '0.3px',
+                  fontSize: { xs: '1rem', sm: '1.2rem' },
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    color: '#f5f5f5',
+                    transform: 'translateY(-1px)'
+                  }
                 }}
                 onClick={() => navigate('/')}
               >
@@ -207,8 +157,18 @@ const Navigation: React.FC = () => {
                   onClick={() => navigate('/')}
                   sx={{
                     mx: 1,
-                    color: location.pathname === '/' ? 'secondary.main' : 'inherit',
-                    fontWeight: location.pathname === '/' ? 600 : 400,
+                    color: location.pathname === '/' ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
+                    fontWeight: location.pathname === '/' ? 600 : 500,
+                    borderRadius: '8px',
+                    px: 2.5,
+                    py: 1,
+                    transition: 'all 0.3s ease',
+                    background: location.pathname === '/' ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+                    '&:hover': {
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: '#f0f0f0',
+                      transform: 'translateY(-1px)'
+                    }
                   }}
                 >
                   Home
@@ -223,10 +183,22 @@ const Navigation: React.FC = () => {
                     mx: 1,
                     color: (location.pathname.includes('/programs') || 
                            location.pathname === '/group-therapy' || 
-                           location.pathname === '/virtual-therapy') ? 'secondary.main' : 'inherit',
+                           location.pathname === '/virtual-therapy') ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
                     fontWeight: (location.pathname.includes('/programs') || 
                                 location.pathname === '/group-therapy' || 
-                                location.pathname === '/virtual-therapy') ? 600 : 400,
+                                location.pathname === '/virtual-therapy') ? 600 : 500,
+                    borderRadius: '8px',
+                    px: 2.5,
+                    py: 1,
+                    transition: 'all 0.3s ease',
+                    background: (location.pathname.includes('/programs') || 
+                                location.pathname === '/group-therapy' || 
+                                location.pathname === '/virtual-therapy') ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+                    '&:hover': {
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: '#f0f0f0',
+                      transform: 'translateY(-1px)'
+                    }
                   }}
                 >
                   Services
@@ -237,130 +209,89 @@ const Navigation: React.FC = () => {
                   onClick={() => navigate('/insurance-verification#verification-form')}
                   sx={{
                     mx: 1,
-                    color: location.pathname === '/insurance-verification' ? 'secondary.main' : 'inherit',
-                    fontWeight: location.pathname === '/insurance-verification' ? 600 : 400,
+                    color: location.pathname === '/insurance-verification' ? '#b8b8b8' : 'rgba(255,255,255,0.8)',
+                    fontWeight: location.pathname === '/insurance-verification' ? 600 : 500,
+                    borderRadius: '8px',
+                    px: 2.5,
+                    py: 1,
+                    transition: 'all 0.3s ease',
+                    background: location.pathname === '/insurance-verification' ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+                    '&:hover': {
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: '#f0f0f0',
+                      transform: 'translateY(-1px)'
+                    }
                   }}
                 >
-                  Insurance
+                  Verify Insurance
                 </Button>
-
-                {isAuthenticated && (
-                  <Button
-                    color="inherit"
-                    onClick={() => navigate(user?.role === 'admin' ? '/admin-portal' : '/patient-portal')}
-                    sx={{
-                      mx: 1,
-                      color: location.pathname.includes('portal') ? 'secondary.main' : 'inherit',
-                      fontWeight: location.pathname.includes('portal') ? 600 : 400,
-                    }}
-                  >
-                    {user?.role === 'admin' ? 'Admin Portal' : 'Patient Portal'}
-                  </Button>
-                )}
-
-                {isAuthenticated && (
-                  <Button
-                    color="inherit"
-                    onClick={() => navigate('/virtual-meeting/demo')}
-                    sx={{
-                      mx: 1,
-                      color: location.pathname.includes('/virtual-meeting') ? 'secondary.main' : 'inherit',
-                      fontWeight: location.pathname.includes('/virtual-meeting') ? 600 : 400,
-                    }}
-                  >
-                    Virtual Meeting
-                  </Button>
-                )}
               </Box>
             )}
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              {isAuthenticated ? (
-                <>
+              {!isMobile && (
+                <Button
+                  variant="contained"
+                  href="tel:8182086456"
+                  startIcon={<Phone />}
+                  sx={{
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    color: '#f0f0f0',
+                    fontWeight: 600,
+                    borderRadius: '8px',
+                    px: 2.5,
+                    py: 1.2,
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      background: 'rgba(255, 255, 255, 0.15)',
+                      transform: 'translateY(-1px)',
+                      borderColor: 'rgba(255, 255, 255, 0.3)'
+                    }
+                  }}
+                >
+                  Call Us
+                </Button>
+              )}
+              {isMobile && (
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Button
+                    variant="text"
+                    size="small"
+                    sx={{
+                      color: 'rgba(255,255,255,0.7)',
+                      fontSize: '0.75rem',
+                      fontWeight: 500,
+                      textTransform: 'none',
+                      minWidth: 'auto',
+                      px: 1,
+                      '&:hover': {
+                        color: '#f0f0f0',
+                        background: 'rgba(255, 255, 255, 0.05)'
+                      }
+                    }}
+                    onClick={() => navigate('/support')}
+                  >
+                    24/7 Support
+                  </Button>
                   <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleMenu}
                     color="inherit"
+                    href="tel:8182086456"
+                    sx={{ 
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      color: '#f0f0f0',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      '&:hover': {
+                        background: 'rgba(255, 255, 255, 0.15)',
+                        transform: 'scale(1.05)',
+                        borderColor: 'rgba(255, 255, 255, 0.3)'
+                      },
+                      transition: 'all 0.3s ease'
+                    }}
                   >
-                    <Avatar sx={{ bgcolor: 'secondary.main' }}>
-                      {user?.firstName?.[0]}{user?.lastName?.[0]}
-                    </Avatar>
+                    <Phone />
                   </IconButton>
-                  <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                  >
-                    <MenuItem onClick={() => { navigate('/patient-portal/profile'); handleClose(); }}>
-                      <Person sx={{ mr: 1 }} />
-                      Profile
-                    </MenuItem>
-                    <MenuItem onClick={handleLogout}>
-                      <Logout sx={{ mr: 1 }} />
-                      Logout
-                    </MenuItem>
-                  </Menu>
-                </>
-              ) : (
-                <>
-                  {!isMobile && (
-                    <Box sx={{ display: 'flex', gap: 1 }}>
-                      <Button color="inherit" onClick={() => navigate('/login')}>
-                        Login
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        color="inherit"
-                        href="tel:8183000033"
-                        startIcon={<Phone />}
-                        sx={{ ml: 1 }}
-                      >
-                        Call Us
-                      </Button>
-                    </Box>
-                  )}
-                  {isMobile && (
-                    <Box sx={{ display: 'flex', gap: 1 }}>
-                      <IconButton
-                        color="inherit"
-                        onClick={() => navigate('/login')}
-                        sx={{ 
-                          bgcolor: 'rgba(255,255,255,0.1)',
-                          '&:hover': {
-                            bgcolor: 'rgba(255,255,255,0.2)',
-                          }
-                        }}
-                      >
-                        <Login />
-                      </IconButton>
-                      <IconButton
-                        color="inherit"
-                        href="tel:8183000033"
-                        sx={{ 
-                          bgcolor: 'rgba(255,255,255,0.1)',
-                          '&:hover': {
-                            bgcolor: 'rgba(255,255,255,0.2)',
-                          }
-                        }}
-                      >
-                        <Phone />
-                      </IconButton>
-                    </Box>
-                  )}
-                </>
+                </Box>
               )}
             </Box>
           </Toolbar>
@@ -404,7 +335,11 @@ const Navigation: React.FC = () => {
           },
         }}
       >
-        {programItems.map((item) => (
+        {menuItems.filter(item => 
+          item.path.includes('/programs') || 
+          item.path === '/group-therapy' || 
+          item.path === '/virtual-therapy'
+        ).map((item) => (
           <MenuItem
             key={item.text}
             onClick={() => {

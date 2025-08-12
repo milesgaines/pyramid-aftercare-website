@@ -218,7 +218,7 @@ const InsuranceCarousel: React.FC = () => {
           {/* Contact Icons */}
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
             <IconButton
-              onClick={() => window.location.href = 'tel:8183000033'}
+              onClick={() => window.location.href = 'tel:8182086456'}
               sx={{
                 bgcolor: '#6B7B7D',
                 color: 'white',

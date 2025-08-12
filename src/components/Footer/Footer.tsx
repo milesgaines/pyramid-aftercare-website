@@ -205,7 +205,7 @@ const Footer: React.FC = () => {
                 <Phone sx={{ fontSize: 20, color: 'rgba(255, 255, 255, 0.7)' }} />
                 <Typography 
                   component="a" 
-                  href="tel:8183000033"
+                  href="tel:8182086456"
                   sx={{ 
                     color: 'rgba(255, 255, 255, 0.8)',
                     textDecoration: 'none',
@@ -215,7 +215,7 @@ const Footer: React.FC = () => {
                     }
                   }}
                 >
-                  (818) 300-0033
+                  (818) 208-6456
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>

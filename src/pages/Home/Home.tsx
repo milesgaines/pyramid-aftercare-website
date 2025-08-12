@@ -24,20 +24,14 @@ import {
   LocationOn,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
 import InsuranceCarousel from '../../components/InsuranceCarousel/InsuranceCarousel';
 import VideoHero from '../../components/VideoHero/VideoHero';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
 
   const handleGetStarted = () => {
-    if (isAuthenticated) {
-      navigate('/patient-portal');
-    } else {
-      navigate('/insurance-verification#verification-form');
-    }
+    navigate('/insurance-verification#verification-form');
   };
 
   return (
@@ -52,9 +46,9 @@ const Home: React.FC = () => {
             variant="h1" 
             component="h1" 
             gutterBottom
-            sx={{ 
+            sx={{
               fontSize: { xs: '2.5rem', md: '3.5rem' },
-              fontWeight: 300,
+              fontWeight: 500,
               letterSpacing: '-0.02em',
               mb: 3
             }}
@@ -67,9 +61,8 @@ const Home: React.FC = () => {
             gutterBottom 
             sx={{ 
               mb: 4, 
-              fontWeight: 300,
+              fontWeight: 400,
               fontSize: { xs: '1.25rem', md: '1.5rem' },
-              color: 'text.secondary',
               maxWidth: 700,
               mx: 'auto',
               lineHeight: 1.5
@@ -167,7 +160,7 @@ const Home: React.FC = () => {
               sx={{ objectFit: 'cover' }}
             />
             <CardContent sx={{ p: 4, flexGrow: 1 }}>
-              <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 400, mb: 2 }}>
+              <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 500, mb: 2 }}>
                 Structured PHP for lasting recovery
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.6 }}>
@@ -204,7 +197,7 @@ const Home: React.FC = () => {
               sx={{ objectFit: 'cover' }}
             />
             <CardContent sx={{ p: 4, flexGrow: 1 }}>
-              <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 400, mb: 2 }}>
+              <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 500, mb: 2 }}>
                 Flexible IOP for busy lives
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.6 }}>
@@ -231,7 +224,7 @@ const Home: React.FC = () => {
       {/* Features Section */}
       <Box sx={{ bgcolor: 'grey.50', py: 8 }}>
         <Container maxWidth="lg">
-          <Typography variant="h2" component="h2" textAlign="center" gutterBottom>
+          <Typography variant="h2" component="h2" textAlign="center" gutterBottom sx={{ fontWeight: 600 }}>
             Why Choose Pyramid After Care?
           </Typography>
           <Typography variant="body1" textAlign="center" color="text.secondary" sx={{ mb: 6 }}>
@@ -272,28 +265,28 @@ const Home: React.FC = () => {
             <Box sx={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 3 }}>
               <Paper sx={{ p: 3, textAlign: 'center' }}>
                 <VideoCall color="primary" sx={{ fontSize: 48, mb: 2 }} />
-                <Typography variant="h6">Virtual Care</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>Virtual Care</Typography>
                 <Typography variant="body2" color="text.secondary">
                   Secure online sessions
                 </Typography>
               </Paper>
               <Paper sx={{ p: 3, textAlign: 'center' }}>
                 <Group color="primary" sx={{ fontSize: 48, mb: 2 }} />
-                <Typography variant="h6">Group Therapy</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>Group Therapy</Typography>
                 <Typography variant="body2" color="text.secondary">
                   Peer support programs
                 </Typography>
               </Paper>
               <Paper sx={{ p: 3, textAlign: 'center' }}>
                 <Schedule color="primary" sx={{ fontSize: 48, mb: 2 }} />
-                <Typography variant="h6">Flexible Hours</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>Flexible Hours</Typography>
                 <Typography variant="body2" color="text.secondary">
                   Convenient scheduling
                 </Typography>
               </Paper>
               <Paper sx={{ p: 3, textAlign: 'center' }}>
                 <Security color="primary" sx={{ fontSize: 48, mb: 2 }} />
-                <Typography variant="h6">HIPAA Secure</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>HIPAA Secure</Typography>
                 <Typography variant="body2" color="text.secondary">
                   Privacy protected
                 </Typography>
@@ -309,10 +302,10 @@ const Home: React.FC = () => {
       {/* CTA Section */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
         <Paper sx={{ p: 6, textAlign: 'center', bgcolor: 'primary.main', color: 'white' }}>
-          <Typography variant="h3" component="h2" gutterBottom>
+          <Typography variant="h3" component="h2" gutterBottom sx={{ color: 'white !important', fontWeight: 600 }}>
             Ready to Start Your Recovery Journey?
           </Typography>
-          <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
+          <Typography variant="h6" sx={{ mb: 4, color: 'white !important', opacity: 0.9, fontWeight: 500 }}>
             Take the first step towards healing with our comprehensive treatment programs
           </Typography>
           <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -330,7 +323,7 @@ const Home: React.FC = () => {
                 },
               }}
             >
-              {isAuthenticated ? 'Access Portal' : 'Get Started'}
+              Get Started
             </Button>
             <Button
               variant="outlined"
@@ -357,7 +350,7 @@ const Home: React.FC = () => {
       {/* Contact Section */}
       <Box sx={{ bgcolor: 'grey.100', py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
-          <Typography variant="h4" component="h2" textAlign="center" gutterBottom sx={{ fontSize: { xs: '1.75rem', md: '2.125rem' } }}>
+          <Typography variant="h4" component="h2" textAlign="center" gutterBottom sx={{ fontSize: { xs: '1.75rem', md: '2.125rem' }, fontWeight: 600 }}>
             Contact Us
           </Typography>
           <Box sx={{ 
@@ -373,11 +366,11 @@ const Home: React.FC = () => {
               maxWidth: { xs: '300px', sm: 'none' }
             }}>
               <Phone color="primary" sx={{ fontSize: { xs: 36, md: 40 }, mb: 2 }} />
-              <Typography variant="h6" sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>Call Us</Typography>
+              <Typography variant="h6" sx={{ fontSize: { xs: '1rem', md: '1.25rem' }, fontWeight: 600 }}>Call Us</Typography>
               <Typography 
                 variant="body1" 
                 component="a" 
-                href="tel:8183000033"
+                href="tel:8182086456"
                 sx={{ 
                   color: 'inherit', 
                   textDecoration: 'none',
@@ -388,7 +381,7 @@ const Home: React.FC = () => {
                   }
                 }}
               >
-                (818) 300-0033
+                (818) 208-6456
               </Typography>
             </Box>
             <Box sx={{ 
@@ -397,7 +390,7 @@ const Home: React.FC = () => {
               maxWidth: { xs: '300px', sm: 'none' }
             }}>
               <Email color="primary" sx={{ fontSize: { xs: 36, md: 40 }, mb: 2 }} />
-              <Typography variant="h6" sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>Email Us</Typography>
+              <Typography variant="h6" sx={{ fontSize: { xs: '1rem', md: '1.25rem' }, fontWeight: 600 }}>Email Us</Typography>
               <Typography 
                 variant="body1" 
                 component="a" 
@@ -421,7 +414,7 @@ const Home: React.FC = () => {
               maxWidth: { xs: '300px', sm: 'none' }
             }}>
               <LocationOn color="primary" sx={{ fontSize: { xs: 36, md: 40 }, mb: 2 }} />
-              <Typography variant="h6" sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>Visit Us</Typography>
+              <Typography variant="h6" sx={{ fontSize: { xs: '1rem', md: '1.25rem' }, fontWeight: 600 }}>Visit Us</Typography>
               <Typography variant="body1" sx={{ fontSize: { xs: '0.9rem', md: '1rem' } }}>Available Nationwide</Typography>
             </Box>
           </Box>

@@ -42,19 +42,18 @@ const IOPProgram: React.FC = () => {
             component="h1"
             sx={{
               fontSize: { xs: '2.5rem', md: '3.5rem' },
-              fontWeight: 600,
+              fontWeight: 300,
               fontFamily: '"Montserrat", sans-serif',
               mb: 3,
             }}
           >
             Intensive Outpatient Program (IOP)
           </Typography>
-          <Typography
+                    <Typography
             variant="h5"
             sx={{
-              fontWeight: 300,
-              maxWidth: 800,
-              mx: 'auto',
+              fontWeight: 400,
+              color: 'white',
               lineHeight: 1.6,
             }}
           >
@@ -65,12 +64,15 @@ const IOPProgram: React.FC = () => {
 
       {/* Program Overview */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Typography
-          variant="h2"
-          component="h2"
-          textAlign="center"
+                <Typography 
+          variant="h2" 
+          component="h1" 
           gutterBottom
-          sx={{ mb: 6, fontFamily: '"Montserrat", sans-serif' }}
+          sx={{ 
+            fontWeight: 300,
+            color: 'primary.main',
+            mb: 3
+          }}
         >
           What is IOP?
         </Typography>
@@ -276,7 +278,7 @@ const IOPProgram: React.FC = () => {
               startIcon={<Phone />}
               sx={{ px: 4, py: 1.5 }}
             >
-              Call (818) 300-0033
+              Call (818) 208-6456
             </Button>
             <Button
               variant="outlined"

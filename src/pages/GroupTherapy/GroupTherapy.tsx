@@ -44,7 +44,7 @@ const GroupTherapy: React.FC = () => {
             component="h1"
             sx={{
               fontSize: { xs: '2.5rem', md: '3.5rem' },
-              fontWeight: 600,
+              fontWeight: 300,
               fontFamily: '"Montserrat", sans-serif',
               mb: 3,
             }}
@@ -276,9 +276,9 @@ const GroupTherapy: React.FC = () => {
                 },
               }}
               startIcon={<Phone />}
-              href="tel:8183000033"
+              href="tel:8182086456"
             >
-              Call (818) 300-0033
+              Call (818) 208-6456
             </Button>
             <Button
               variant="outlined"
